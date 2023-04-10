@@ -10,3 +10,18 @@ db.emp.getIndexes()
 db.emp.createIndexes({"job_id":1})
 
 db.emp.dropIndexes({"job_id":1})
+
+
+
+db.article.insert([
+     {"text":"ind11ia with cricket","tags":["ind12ia","cricket"]},
+      {"text":"economy of india","tags":["economy","india"]},
+ {"text":"nature and beatuy of himalays","tags":["himalays","nature"]}, {"text":"beauty of india","tags":["beauty","ind"]}
+  ])
+
+  db.article.createIndex({text:"text"})
+
+  db.article.find({$text:{$search:'india'}})
+  db.article.find({tag:{$regex:'ind'}}).pretty()
+
+  db.article.find({tag:{$regex:'h'}}).pretty()
