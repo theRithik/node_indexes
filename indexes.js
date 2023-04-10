@@ -25,3 +25,20 @@ db.article.insert([
   db.article.find({tag:{$regex:'ind'}}).pretty()
 
   db.article.find({tag:{$regex:'h'}}).pretty()
+
+
+
+  db.emp.reIndex({"phone":1})
+
+  ////ttl
+  db.emp.createIndex({"phone":1},{expireAfterSecounds:3600})
+
+  db.emp.createIndex({'phone':1},{background:true})
+
+db.places.insert({"name":"mobile","type":"elec","location":[40.232,-74.343]})
+db.places.insert({"name":"tv","type":"elec","location":[50.232,-84.343]})
+db.places.insert({"name":"cloths","type":"cloths","location":[60.232,-94.343]})
+
+db.place.find({location:{$near:[40, -60]}})
+
+db.place.find({location:{$near:[70, -64]}}).limit(2).pretty()
