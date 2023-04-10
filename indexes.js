@@ -42,3 +42,9 @@ db.places.insert({"name":"cloths","type":"cloths","location":[60.232,-94.343]})
 db.place.find({location:{$near:[40, -60]}})
 
 db.place.find({location:{$near:[70, -64]}}).limit(2).pretty()
+
+
+
+db.shops.reIndex({location:"2dsphere"})
+db.shops.find({ location:{$near:{$geometry:{type:"Point",coordinates:[100,56]},
+ $maxDistance:9000000 }} }).pretty()
